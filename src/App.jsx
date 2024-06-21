@@ -7,11 +7,13 @@ import Footer from './components/Footer';
 
 function App() {
 
+  // state variables to store the news results from the news API and load more from the results
   let [category, setCategory] = useState("General");
   let [newsArray, setNewsArray] = useState([]);
   let [newsResults, setNewsResults] = useState();
   let [loadMore, setLoadMore] = useState(20);
 
+  // fetch the news using the news API and storing them in an array
   useEffect(() => {
     fetch(`https://newsapi.org/v2/top-headlines?country=in&apiKey=${apikey}&category=${category}&pageSize=${loadMore}`)
       .then((response) => {
