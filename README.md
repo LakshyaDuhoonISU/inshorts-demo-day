@@ -8,4 +8,5 @@ To install -
 3. Run the following command - 
 ```npm install
 npm install @mui/material @emotion/react @emotion/styled @mui/icons-material
-npm run dev```
+npm run dev
+```
