@@ -14,6 +14,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import categories from '../data/categories';
+import { Theme } from '../App';
 
 
 export default function AnchorTemporaryDrawer(props) {
@@ -51,21 +52,23 @@ export default function AnchorTemporaryDrawer(props) {
       <Divider />
       <List>
         { // displaying the list of categories in the drawer and setting the state variable when a particular category is clicked to fetch the news of that particular category
-        categories.map((text, index) => (
-          <ListItem style={{ height: 50, borderRadius: 3 }} key={text} disablePadding>
-            <ListItemButton onClick={() => { props.setCategory(text) }}>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+          categories.map((text, index) => (
+            <ListItem style={{ height: 50, borderRadius: 3 }} key={text} disablePadding>
+              <ListItemButton onClick={() => { props.setCategory(text) }}>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
       </List>
     </Box>
   );
 
+  let theme = React.useContext(Theme);
+
   return (
     <div>
       <React.Fragment key={"left"}>
-        <Button onClick={toggleDrawer("left", true)} sx={{ color: 'black' }}><MenuIcon />Menu</Button>
+        {theme === 'light' ? (<Button onClick={toggleDrawer("left", true)} sx={{ color: 'black' }}><MenuIcon />Menu</Button>) : (<Button style={{ color: "white" }} onClick={toggleDrawer("left", true)} sx={{ color: 'black' }}><MenuIcon />Menu</Button>)}
         <ThemeProvider theme={darkTheme}>
           <Drawer
             anchor={"left"}

@@ -20,3 +20,29 @@
   flex-direction: column;
   align-items: center;
 }
+
+.content-dark {
+  background-color: rgb(36, 35, 35);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.loadmore-dark {
+  cursor: pointer;
+  background-color: rgb(179, 176, 176);
+  border: none;
+  box-shadow: 0 2px 5px 0 rgb(255, 255, 255), 0 2px 10px 0 rgb(255, 255, 255);
+  padding: 4px 25px;
+  font-size: 13px;
+  margin-top: -5px;
+  transition: box-shadow 0.25s;
+}
+
+.loadmore-dark:hover {
+  box-shadow: 0 8px 17px 0 rgba(255, 255, 255, 0.796),
+    0 6px 20px 0 rgba(255, 255, 255, 0.794);
+  transition: box-shadow 0.25s;
+}

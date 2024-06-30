@@ -57,10 +57,21 @@
   font-weight: 100;
 }
 
+.muted-dark {
+  font-weight: 100;
+  color: white;
+}
+
 .description {
   font-size: 16px;
   line-height: 22px;
   color: #44444d;
+}
+
+.description-dark {
+  font-size: 16px;
+  line-height: 22px;
+  color: #bbbaba;
 }
 
 a {

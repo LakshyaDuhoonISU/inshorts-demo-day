@@ -19,3 +19,12 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.container-dark {
+  background-color: rgb(36, 35, 35);
+  height: 71px;
+  box-shadow: 0px 1px 8px #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
