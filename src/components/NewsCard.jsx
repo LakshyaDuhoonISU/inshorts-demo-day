@@ -38,7 +38,7 @@ function NewsCard(props) {
                 {/* displaying the news article description */}
                 <div className='lowernewstext'>
                     <div className='description'>
-                        {props.newsItem.description}
+                        {props.newsItem.description ? props.newsItem.description : props.newsItem.title}
                     </div>
                     {/* read more button to fetch more articles */}
                     <span className='readmore'>
