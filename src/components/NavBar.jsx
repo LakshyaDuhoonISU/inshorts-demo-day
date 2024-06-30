@@ -14,13 +14,13 @@ function NavBar(props) {
                 <img src='https://assets.inshorts.com/website_assets/images/logo_inshorts.png'
                     alt='logo' className='img'
                 />
-                <button className='btn' onClick={props.toggleTheme}><i className="fa-regular fa-sun"></i></button>
+                <button className='btn' onClick={props.toggleTheme}><i className="fa-solid fa-moon"></i></button>
             </div>) : (<div className='container-dark'>
                 <div><MenuNav setCategory={props.setCategory} /></div>
                 <img src='https://assets.inshorts.com/website_assets/images/logo_inshorts.png'
                     alt='logo' className='img'
                 />
-                <button className='btn' onClick={props.toggleTheme}><i className="fa-solid fa-moon"></i></button>
+                <button className='btn' onClick={props.toggleTheme}><i className="fa-regular fa-sun"></i></button>
             </div>)}
         </>
     )
