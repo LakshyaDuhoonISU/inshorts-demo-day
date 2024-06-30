@@ -9,6 +9,14 @@ function NewsCard(props) {
     // checking if the hour is beyond 12 for AM/PM purposes
     const time = hour > 12 ? true : false;
 
+    // Utility function to truncate text to a specified number of words
+    function truncateText(text, maxWords) {
+        const wordsArray = text.split(' ');
+        if (wordsArray.length > maxWords) {
+            return wordsArray.slice(0, maxWords).join(' ');
+        }
+        return text;
+    }
 
     return (
         <div className='newscard'>
@@ -38,7 +46,9 @@ function NewsCard(props) {
                 {/* displaying the news article description */}
                 <div className='lowernewstext'>
                     <div className='description'>
-                        {props.newsItem.description ? props.newsItem.description : props.newsItem.title}
+                        {props.newsItem.description
+                            ? truncateText(props.newsItem.description, 39)
+                            : truncateText(props.newsItem.title, 39)}
                     </div>
                     {/* read more button to fetch more articles */}
                     <span className='readmore'>
