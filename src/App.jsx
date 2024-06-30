@@ -10,7 +10,7 @@ export const Theme = createContext();
 
 function App() {
 
-  // state variables to store the news results from the news API and load more from the results
+  // state variables to store the news results from the news API and load more from the results and store the theme preference of the user
   let [category, setCategory] = useState("General");
   let [newsArray, setNewsArray] = useState([]);
   let [newsResults, setNewsResults] = useState();
@@ -19,6 +19,7 @@ function App() {
   let [theme, setTheme] = useState('light');
 
   function toggleTheme() {
+    // set the theme to dark if the theme is light and vice versa
     setTheme(theme==='light'?'dark' : 'light');
   }
 
@@ -31,7 +32,7 @@ function App() {
       .then((data) => {
         setNewsArray(data.articles);
         setNewsResults(data.totalResults);
-        console.log(data.articles);
+       // console.log(data.articles);
       })
       .catch((err) => {
         console.log(err)
@@ -40,7 +41,9 @@ function App() {
 
   return (
     <>
+    {/* providing the theme details to all the components to render the appropriate elements */}
       <Theme.Provider value={theme}>
+        {/* render these components only after the user has selected a category initially, else show the categories to the user first  */}
         {isSelected ? (
           <div>
             <NavBar setCategory={setCategory} toggleTheme={toggleTheme} />

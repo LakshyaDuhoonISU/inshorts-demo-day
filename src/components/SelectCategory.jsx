@@ -7,6 +7,7 @@ function SelectCategory(props) {
         <div className={styles.container}>
             <div className={styles.category}>
                 <h1>Select your preferred category</h1>
+                {/* uses map function to create buttons for each category for the user to initially select */}
                 {categories.map((text, index) => (
                     <button className={styles.btn} onClick={() => { props.setIsSelected(true); props.setCategory(text) }} key={index}>{text}</button>))}
             </div>

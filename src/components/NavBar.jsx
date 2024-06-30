@@ -9,6 +9,7 @@ function NavBar(props) {
     return (
         <>
             {/* setting the menu bar on the left hand side and the inshorts logo on the middle of the navigation bar */}
+            {/* using ternary operator to check whether the theme is light or dark and rendering the the appropriate elements */}
             {theme === 'light' ? (<div className='container'>
                 <div><MenuNav setCategory={props.setCategory} /></div>
                 <img src='https://assets.inshorts.com/website_assets/images/logo_inshorts.png'

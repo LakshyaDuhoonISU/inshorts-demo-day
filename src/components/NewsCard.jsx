@@ -20,10 +20,12 @@ function NewsCard(props) {
         return text;
     }
 
+    // using the context API to get the theme that the user has selected
     let theme=useContext(Theme);
 
     return (
         <>
+            {/* using ternary operator to check whether the theme is light or dark and rendering the the appropriate elements */}
             {theme === 'light' ? (<div className='newscard'>
                 {/* if the image is present in the array then display it, else display the placeholder img */}
                 <img className='newsimg' alt={props.newsItem.title} src={props.newsItem.urlToImage
