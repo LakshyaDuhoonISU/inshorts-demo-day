@@ -26,3 +26,7 @@
     background-color: #e1e1e1;
     transition: 0.3s linear;
 }
+
+.btn:active {
+    background-color: #d1d1d1;
+}

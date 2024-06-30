@@ -3,6 +3,7 @@
   box-shadow: 0px 1px 8px #888888;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .img {
@@ -10,6 +11,11 @@
   cursor: pointer;
 }
 
-.icon {
-  flex: 0.5;
+.btn {
+  margin: 0 10px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
