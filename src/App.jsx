@@ -5,6 +5,9 @@ import NewsContent from './components/NewsContent';
 import apikey from './data/config';
 import Footer from './components/Footer';
 import SelectCategory from './components/SelectCategory';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from './components/HomePage';
+import NotFound from './components/NotFound';
 
 export const Theme = createContext();
 
@@ -20,7 +23,7 @@ function App() {
 
   function toggleTheme() {
     // set the theme to dark if the theme is light and vice versa
-    setTheme(theme==='light'?'dark' : 'light');
+    setTheme(theme === 'light' ? 'dark' : 'light');
   }
 
   // fetch the news using the news API and storing them in an array
@@ -32,7 +35,7 @@ function App() {
       .then((data) => {
         setNewsArray(data.articles);
         setNewsResults(data.totalResults);
-       // console.log(data.articles);
+        // console.log(data.articles);
       })
       .catch((err) => {
         console.log(err)
@@ -41,14 +44,26 @@ function App() {
 
   return (
     <>
-    {/* providing the theme details to all the components to render the appropriate elements */}
+      {/* providing the theme details to all the components to render the appropriate elements */}
       <Theme.Provider value={theme}>
         {/* render these components only after the user has selected a category initially, else show the categories to the user first  */}
         {isSelected ? (
           <div>
-            <NavBar setCategory={setCategory} toggleTheme={toggleTheme} />
-            <NewsContent setLoadMore={setLoadMore} loadMore={loadMore} newsArray={newsArray} newsResults={newsResults} />
-            <Footer />
+            <BrowserRouter>
+              <Routes>
+                <Route path='/' element={
+                  <HomePage
+                    setCategory={setCategory}
+                    toggleTheme={toggleTheme}
+                    setLoadMore={setLoadMore}
+                    loadMore={loadMore}
+                    newsArray={newsArray}
+                    newsResults={newsResults}
+                  />
+                } />
+                <Route path='*' element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
           </div>
         ) : (
           <SelectCategory setIsSelected={setIsSelected} setCategory={setCategory} />
