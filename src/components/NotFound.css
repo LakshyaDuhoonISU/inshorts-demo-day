@@ -1,19 +1,19 @@
 .not-found-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    text-align: center;
-  }
-  
-  .not-found-heading {
-    font-size: 48px;
-    color: #ff0000;
-    margin-bottom: 20px;
-  }
-  
-  .not-found-description {
-    font-size: 24px;
-    color: #333333;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.not-found-heading {
+  font-size: 48px;
+  color: #ff0000;
+  margin-bottom: 20px;
+}
+
+.not-found-description {
+  font-size: 24px;
+  color: #333333;
+}
