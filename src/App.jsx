@@ -49,6 +49,7 @@ function App() {
         {/* render these components only after the user has selected a category initially, else show the categories to the user first  */}
         {isSelected ? (
           <div>
+            {/* use routing to show error page if the user enters an invalid URL, else show the home page */}
             <BrowserRouter>
               <Routes>
                 <Route path='/' element={
@@ -67,6 +68,7 @@ function App() {
           </div>
         ) : (
           <BrowserRouter>
+            {/* use routing to show error page if the user enters an invalid URL, else show the category page */}
             <Routes>
               <Route path='/' element={<SelectCategory setIsSelected={setIsSelected} setCategory={setCategory} />} />
               <Route path='*' element={<NotFound />} />
