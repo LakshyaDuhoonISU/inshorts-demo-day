@@ -66,7 +66,12 @@ function App() {
             </BrowserRouter>
           </div>
         ) : (
-          <SelectCategory setIsSelected={setIsSelected} setCategory={setCategory} />
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<SelectCategory setIsSelected={setIsSelected} setCategory={setCategory} />} />
+              <Route path='*' element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
         )}
       </Theme.Provider>
     </>
