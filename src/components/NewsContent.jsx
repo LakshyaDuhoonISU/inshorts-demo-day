@@ -10,6 +10,7 @@ function NewsContent(props) {
     let theme = useContext(Theme);
     let [newsArray, setNewsArray] = useState([]);
     let [newsResults, setNewsResults] = useState();
+    let [loading, setLoading] = useState(true);
     const [showTopBtn, setShowTopBtn] = useState(false); // state to manage the visibility of the top button
 
     useEffect(() => {
@@ -34,15 +35,18 @@ function NewsContent(props) {
     // fetching the news of the topic that the user has given via the userSearch prop
     useEffect(() => {
         if (props.userSearch !== '') {
+            setLoading(true);
             fetch(`https://newsapi.org/v2/everything?q=${props.userSearch}&sortBy=popularity&apiKey=${apikey}&pageSize=${props.loadMore}`)
                 .then((response) => response.json())
                 .then((data) => {
                     setNewsArray(data.articles);
                     setNewsResults(data.totalResults);
+                    setLoading(false);
                     // console.log(data);
                 })
                 .catch((err) => {
                     console.log(err);
+                    setLoading(false);
                 });
         }
     }, [props.userSearch, props.loadMore]);
@@ -64,11 +68,12 @@ function NewsContent(props) {
                         <>
                             <h1>News with topic: {props.userSearch}</h1>
                             {
-                                newsArray.length <= 0 ? <h1>No news found</h1> :
-                                // using filter function to not display the news articles which are removed from their website
-                                    newsArray.filter(newsItem => newsItem.title !== '[Removed]').map((newsItem) => (
-                                        <NewsCard key={newsItem.title} newsItem={newsItem} />
-                                    ))}
+                                loading ? <div>Loading...</div> :
+                                    newsArray.length <= 0 ? <h1>No news found</h1> :
+                                        // using filter function to not display the news articles which are removed from their website
+                                        newsArray.filter(newsItem => newsItem.title !== '[Removed]').map((newsItem) => (
+                                            <NewsCard key={newsItem.title} newsItem={newsItem} />
+                                        ))}
                         </>) : (
                         // using map function on the array storing the news and displaying the news on a card
                         props.newsArray.map((newsItem) => {
@@ -77,7 +82,7 @@ function NewsContent(props) {
                 }
                 { // displaying the load more button only when the news displayed on the screen is less than the total news in the array(38) and removing it when all the news is displayed on the screen
                     props.useSearch !== '' ?
-                    // checking if the condition to display the load more button is satisfied when user searches for a topic
+                        // checking if the condition to display the load more button is satisfied when user searches for a topic
                         props.loadMore <= newsResults && (
                             <>
                                 <hr></hr>
@@ -109,7 +114,7 @@ function NewsContent(props) {
                             <h1>News with topic: {props.userSearch}</h1>
                             {
                                 newsArray.length <= 0 ? <h1>No news found</h1> :
-                                // using filter function to not display the news articles which are removed from their website
+                                    // using filter function to not display the news articles which are removed from their website
                                     newsArray.filter(newsItem => newsItem.title !== '[Removed]').map((newsItem) => (
                                         <NewsCard key={newsItem.title} newsItem={newsItem} />
                                     ))}
@@ -121,7 +126,7 @@ function NewsContent(props) {
                 }
                 { // displaying the load more button only when the news displayed on the screen is less than the total news in the array(38) and removing it when all the news is displayed on the screen
                     props.useSearch !== '' ?
-                    // checking if the condition to display the load more button is satisfied when user searches for a topic
+                        // checking if the condition to display the load more button is satisfied when user searches for a topic
                         props.loadMore <= newsResults && (
                             <>
                                 <hr></hr>
