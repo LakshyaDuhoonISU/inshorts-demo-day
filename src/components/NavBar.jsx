@@ -42,7 +42,8 @@ function NavBar(props) {
                 <img src='https://assets.inshorts.com/website_assets/images/logo_inshorts.png'
                     alt='logo' className='img'
                 />
-                <form>
+                {/* using a form to get the topic that the user wants to search for */}
+                <form onSubmit={() => { setSearch() }}>
                     <input
                         type="text"
                         placeholder="Search news..."
