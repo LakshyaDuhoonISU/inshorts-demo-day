@@ -31,6 +31,7 @@ function NewsContent(props) {
         };
     }, []);
 
+    // fetching the news of the topic that the user has given via the userSearch prop
     useEffect(() => {
         if (props.userSearch !== '') {
             fetch(`https://newsapi.org/v2/everything?q=${props.userSearch}&sortBy=popularity&apiKey=${apikey}&pageSize=${props.loadMore}`)
@@ -58,11 +59,13 @@ function NewsContent(props) {
             {/* using ternary operator to check whether the theme is light or dark and rendering the the appropriate elements */}
             {theme === 'light' ? (<Container maxWidth="md"><div className='content'>
                 {
+                    // display the news of the topic that the user has searched for
                     props.userSearch !== '' ? (
                         <>
                             <h1>News with topic: {props.userSearch}</h1>
                             {
                                 newsArray.length <= 0 ? <h1>No news found</h1> :
+                                // using filter function to not display the news articles which are removed from their website
                                     newsArray.filter(newsItem => newsItem.title !== '[Removed]').map((newsItem) => (
                                         <NewsCard key={newsItem.title} newsItem={newsItem} />
                                     ))}
@@ -74,6 +77,7 @@ function NewsContent(props) {
                 }
                 { // displaying the load more button only when the news displayed on the screen is less than the total news in the array(38) and removing it when all the news is displayed on the screen
                     props.useSearch !== '' ?
+                    // checking if the condition to display the load more button is satisfied when user searches for a topic
                         props.loadMore <= newsResults && (
                             <>
                                 <hr></hr>
@@ -99,11 +103,13 @@ function NewsContent(props) {
                 }
             </div></Container>) : (<div style={{ backgroundColor: "black" }}><Container maxWidth="md" style={{ backgroundColor: "black" }}><div className='content-dark'>
                 {
+                    // display the news of the topic that the user has searched for
                     props.userSearch !== '' ? (
                         <>
                             <h1>News with topic: {props.userSearch}</h1>
                             {
                                 newsArray.length <= 0 ? <h1>No news found</h1> :
+                                // using filter function to not display the news articles which are removed from their website
                                     newsArray.filter(newsItem => newsItem.title !== '[Removed]').map((newsItem) => (
                                         <NewsCard key={newsItem.title} newsItem={newsItem} />
                                     ))}
@@ -115,6 +121,7 @@ function NewsContent(props) {
                 }
                 { // displaying the load more button only when the news displayed on the screen is less than the total news in the array(38) and removing it when all the news is displayed on the screen
                     props.useSearch !== '' ?
+                    // checking if the condition to display the load more button is satisfied when user searches for a topic
                         props.loadMore <= newsResults && (
                             <>
                                 <hr></hr>
