@@ -4,8 +4,7 @@ function Footer() {
     return (
         // displaying the inshorts logo on the footer
         <div className="footer">
-            <img src="https://assets.inshorts.com/website_assets/images/logo_footer.png" alt="footer_logo"
-                height="80" />
+            <h1 height="80">NewsE5</h1>
         </div>
     )
 }

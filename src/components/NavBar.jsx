@@ -21,9 +21,8 @@ function NavBar(props) {
             {/* using ternary operator to check whether the theme is light or dark and rendering the the appropriate elements */}
             {theme === 'light' ? (<div className='container'>
                 <div><MenuNav setCategory={props.setCategory} /></div>
-                <img src='https://assets.inshorts.com/website_assets/images/logo_inshorts.png'
-                    alt='logo' className='img'
-                />
+                <h1 className='img'
+                >NewsE5</h1>
                 {/* using a form to get the topic that the user wants to search for */}
                 <form onSubmit={() => { setSearch() }}>
                     <input
@@ -39,9 +38,8 @@ function NavBar(props) {
                 <button className='btn' onClick={props.toggleTheme}><i className="fa-solid fa-moon"></i></button>
             </div>) : (<div className='container-dark'>
                 <div><MenuNav setCategory={props.setCategory} /></div>
-                <img src='https://assets.inshorts.com/website_assets/images/logo_inshorts.png'
-                    alt='logo' className='img'
-                />
+                <h1 className='img'
+                >NewsE5</h1>
                 {/* using a form to get the topic that the user wants to search for */}
                 <form onSubmit={() => { setSearch() }}>
                     <input
